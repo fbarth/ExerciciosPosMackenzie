@@ -1,0 +1,18 @@
+{
+    "contents" : "# aquisicao dos dados\ndata(\"iris\")\n# analise descritiva inicial\nclass(iris)\nsapply(iris, class)\ntable(iris$Species)\nhist(iris$Sepal.Length, \n     col='cyan', \n     main = 'Sepal Length', \n     xlab='Centimetros', \n     ylab='Frequencia')\n\nboxplot(iris$Sepal.Length, col= 'red')\n\nhist(iris$Petal.Length, col='cyan', \n     main=paste('Comprimento da Pétala (média = ',\n                mean(iris$Petal.Length, col='cyan'),')'))\n\nplot(iris$Petal.Length, iris$Petal.Width, pch=19)\n\n# formas para selecionar o subset de um data.frame\niris[2 , ]\niris[2:5 , ]\niris[ , 1]\niris[, c('Sepal.Length')]\niris[1:5,c(1,5)]\niris[1:5,4:5]\n\nplot(iris[, 1:4], pch=19)\n\ncor(iris$Petal.Length, iris$Petal.Width)\ncor(iris$Sepal.Length, iris$Sepal.Width)\n\nplot(iris[, 1:4], pch=19, col= iris$Species)\nplot(iris$Petal.Length, iris$Petal.Width,\n     pch= 19, col = iris$Species)\n\ninstall.packages(\"party\")\nlibrary(party)\nmodel <- ctree(Species ~ Petal.Length + \n                 Petal.Width + Sepal.Length +\n                 Sepal.Width, data = iris)\n\nnovas_flores <- iris[c(3,80,140),1:4]\nnovas_flores\n\npredict(model, novas_flores)\n\nind <- sample(2, nrow(iris), replace = TRUE, prob = c(0.8, 0.2))\ntreinamento <- iris[ind == 1, ]\nteste <- iris[ind == 2, ]\n\nmodel <- ctree(Species ~ Petal.Length + \n                 Petal.Width + Sepal.Length +\n                 Sepal.Width, data = treinamento)\n\nteste$Species_predito <- predict(model, teste)\nView(teste)\n",
+    "created" : 1461883353761.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1589125134",
+    "id" : "9ABAD7C9",
+    "lastKnownWriteTime" : 1461892988,
+    "path" : "~/workspaces/R/ExerciosPosMackenzie/scripts/ExemploIris.R",
+    "project_path" : "scripts/ExemploIris.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
