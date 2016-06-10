@@ -8,10 +8,10 @@ iris_norm <- as.data.frame(lapply(iris[1:4], normalize))
 summary(iris_norm)
 
 set.seed(1234)
-ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.67, 0.33))
+ind <- sample(2, nrow(iris_norm), replace=TRUE, prob=c(0.67, 0.33))
 
-iris.training <- iris[ind==1, 1:4]
-iris.test <- iris[ind==2, 1:4]
+iris.training <- iris_norm[ind==1, 1:4]
+iris.test <- iris_norm[ind==2, 1:4]
 
 iris.trainLabels <- iris[ind==1, 5]
 iris.testLabels <- iris[ind==2, 5]
